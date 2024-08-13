@@ -1,26 +1,21 @@
 trigger: none
-pool : Default
+pool: Default
 stages:
-- stage: 
-  jobs: 
-  - job: 
-    steps: 
-    - task: TerraformInstaller@1
-      inputs:
-        terraformVersion: 'latest'
-    - task: TerraformTaskV4@4
-      inputs:
-        provider: 'azurerm'
-        command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)environment/prod'
-        backendServiceArm: 'seviceconection3'
-        backendAzureRmResourceGroupName: 'StorageAccountfortfstate'
-        backendAzureRmStorageAccountName: 'tfstatestagerishab'
-        backendAzureRmContainerName: 'tfstate'
-        backendAzureRmKey: 'prod.terraform.tfstate'
-    - task: TerraformTaskV4@4
-      inputs:
-        provider: 'azurerm'
-        command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)environment/prod'
-        environmentServiceNameAzureRM: 'seviceconection3'
+  - stage:
+    jobs: 
+    - job: 
+      steps:
+      - task: TerraformInstaller@1
+        inputs:
+          terraformVersion: 'latest'
+      - task: TerraformTaskV4@4
+        inputs:
+          provider: 'azurerm'
+          command: 'init'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/Environment/prod'
+          backendServiceArm: 'seviceconection3'
+          backendAzureRmResourceGroupName: 'StorageAccountfortfstate'
+          backendAzureRmStorageAccountName: 'tfstatestagerishab'
+          backendAzureRmContainerName: 'tfstate'
+          backendAzureRmKey: 'prod.terraform.tfstate'
+          
