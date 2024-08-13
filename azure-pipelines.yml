@@ -1,13 +1,10 @@
-trigger: 
-pool : default
+trigger: none
+pool : Default
 stages:
 - stage: 
   jobs: 
   - job: 
     steps:
-    - task: TerraformInstaller@1
-      inputs:
-        terraformVersion: 'latest'
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
